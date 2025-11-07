@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       name: 'Del Valle Piña 1L',
       material: 'TetraPak',
       weight_g: 26,
-      img: 'img/plant.png' 
+      img: 'img/Del Valle Pina 1L.png' 
     }
   };
 
@@ -336,4 +336,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
 
