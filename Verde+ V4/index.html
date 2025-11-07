@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recycle App</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+</head>
+<body>
+  <div class="app">
+
+    <section class="screen active fade-in" id="intro">
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="img/escaneo-de-codigo-de-barras.png" alt="Escanear" class="slide-img" />
+          <h2>Escanea tus Productos</h2>
+          <p>Usa la cámara para escanear códigos de barras y saber cómo reciclar cada envase.</p>
+        </div>
+        <div class="slide">
+          <img src="img/reciclaje.png" alt="Mapa" class="slide-img" />
+          <h2>Encuentra Puntos Verdes</h2>
+          <p>Ubica centros de reciclaje y puntos limpios cerca de ti en el mapa interactivo.</p>
+        </div>
+        <div class="slide">
+          <img src="img/recompensas.png" alt="Recompensas" class="slide-img" />
+          <h2>Gana Recompensas</h2>
+          <p>Acumula puntos por cada producto reciclado y canjéalos por premios increíbles.</p>
+        </div>
+        <div class="slide">
+          <img src="img/truck.png" alt="Horarios" class="slide-img" />
+          <h2>Horarios de Recolección</h2>
+          <p>Revisa las fechas y horarios en que el camión de reciclaje pasa por tu zona.</p>
+        </div>
+        <div class="slide">
+          <img src="img/news.png" alt="Noticias" class="slide-img" />
+          <h2>Eventos y Noticias</h2>
+          <p>Infórmate de las últimas noticias y eventos comunitarios sobre ecología.</p>
+        </div>
+      </div>
+
+      <div class="slide-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+        <span class="dot" data-slide="3"></span>
+        <span class="dot" data-slide="4"></span>
+      </div>
+
+      <div class="intro-nav">
+        <button class="btn-secondary" id="skipIntroBtn">Saltar</button>
+        <button class="btn" id="nextSlideBtn">Siguiente</button>
+      </div>
+    </section>
+
+    <section class="screen fade-in" id="login">
+    <h1 class="logo">
+        <img src="img/logo sin bg.png" alt="Logo de Verde Más" class="logo-img">
+    </h1>
+      <input type="text" placeholder="Usuario / Correo" id="user" />
+      <input type="password" placeholder="Contraseña" id="pass" />
+      <button class="btn" id="loginBtn">Acceder</button>
+      <button class="btn-secondary" id="registerBtn">Registrarse</button>
+      <a href="#" class="link">Recuperar Contraseña</a>
+    </section>
+
+    <section class="screen fade-in" id="dashboard">
+      <header>
+        <h2>Inicio</h2>
+        <div class="user-info">
+          <img src="img\avatar.png" alt="Usuario" class="avatar" />
+          <div>
+            <h3>Lucia</h3>
+            <p>Reciclador</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="stats">
+        <div class="card">
+          <h3>Árboles salvados</h3>
+          <p class="value">12</p>
+        </div>
+        <div class="card">
+          <h3>Puntos</h3>
+          <p class="value">935</p>
+        </div>
+      </div>
+
+      <div class="progress-section">
+        <h3>Progreso semanal</h3>
+        <p><strong id="weeklyPoints">0 pts</strong> <span id="progressChange" class="positive">+0%</span></p>
+        <canvas id="recycleChart"></canvas>
+      </div>
+
+      <div class="quick-actions">
+        <h3>Acciones rápidas</h3>
+        <div class="action-card">
+          <img src="img\recompensas.png" alt="Recompensas">
+          <div>
+            <h4>Recompensas</h4>
+            <p>Canjea tus puntos por premios exclusivos.</p>
+            <button class="btn-action" id="rewardsBtn">Ver recompensas</button>
+          </div>
+        </div>
+
+        <div class="action-card">
+          <img src="img\escaneo-de-codigo-de-barras.png" alt="Escanear">
+          <div>
+            <h4>Escanear productos</h4>
+            <p>Escanea los códigos de barra de tus reciclables.</p>
+            <button class="btn-action" id="scanBtn">Escanear ahora</button>
+          </div>
+        </div>
+
+        <div class="action-card">
+          <img src="img\reciclaje.png" alt="Puntos verdes">
+          <div>
+            <h4>Puntos verdes</h4>
+            <p>Encuentra centros de reciclaje cercanos.</p>
+            <button class="btn-action" id="mapBtn">Ver ubicaciones</button>
+          </div>
+        </div>
+        
+        <div class="action-card">
+          <img src="img/truck.png" alt="Horarios">
+          <div>
+            <h4>Horarios de Recolección</h4>
+            <p>Revisa cuándo pasa el camión por tu zona.</p>
+            <button class="btn-action" id="truckScheduleBtn">Ver Horarios</button>
+          </div>
+        </div>
+        
+        <div class="action-card">
+          <img src="img/news.png" alt="Noticias">
+          <div>
+            <h4>Eventos y Noticias</h4>
+            <p>Infórmate sobre eventos de reciclaje.</p>
+            <button class="btn-action" id="newsBtn">Ver Noticias</button>
+          </div>
+        </div>
+      </div>
+
+
+      <footer>
+        <nav class="bottom-nav">
+            <a href="#" id="navHomeDash" class="active">Inicio</a>
+            <a href="#" id="navHistoryDash">Historial</a>
+            <a href="#" id="navProfileDash">Perfil</a>
+        </nav>
+      </footer>
+    </section>
+
+    <section class="screen fade-in" id="mapScreen">
+      <h2>Puntos Verdes Cercanos</h2>
+      <div id="map"></div>
+      <button class="btn-secondary" id="backFromMap">Volver</button>
+    </section>
+
+    <section class="screen fade-in" id="scannerScreen">
+      <h2>Escanear código de barras</h2>
+      <div id="scanner"></div>
+      <p id="scanResult">Iniciando cámara...</p>
+      
+      <button class="btn-secondary" id="backFromScanner">Volver</button>
+    </section>
+
+    <div id="scanResultModal" class="modal-overlay">
+      <div class="modal-content">
+        <img src="img/bottle.png" alt="Producto" id="modalProductImage" />
+        <h2 id="modalProductName">Botella de Plástico</h2>
+        <p id="modalPointsResult">¡Ganaste <strong>12</strong> puntos!</p>
+        
+        <div class="modal-info-section" id="modalRecycleInfo">
+          <h4>Cómo guardarlo en casa:</h4>
+          <p>Limpia la botella y aplástala para ahorrar espacio. Guárdala en un contenedor separado.</p>
+          <h4>Cómo reciclarlo:</h4>
+          <p>Quítale la tapa (se recicla por separado) y deposita la botella en el contenedor de plásticos.</p>
+        </div>
+        
+        <button class="btn" id="closeModalBtn">Escanear otro</button>
+      </div>
+    </div>
+
+
+    <section class="screen fade-in" id="rewardsScreen">
+      <header>
+        <h2>Recompensas</h2>
+        <div class="user-points-display">
+          Tus Puntos: <strong id="userPointsDisplay">935</strong>
+        </div>
+      </header>
+
+      <p class="section-intro">Canjea tus puntos por premios increíbles. ¡Sigue reciclando!</p>
+
+      <div class="rewards-grid">
+        <div class="reward-card">
+          <img src="img/gift-card.png" alt="Gift Card">
+          <h4>Gift Card $5.000</h4>
+          <p class="points-cost">500 Puntos</p>
+          <button class="btn-action">Canjear</button>
+        </div>
+        <div class="reward-card">
+          <img src="img/tote-bag.png" alt="Tote Bag">
+          <h4>Tote Bag Reciclada</h4>
+          <p class="points-cost">300 Puntos</p>
+          <button class="btn-action">Canjear</button>
+        </div>
+        <div class="reward-card">
+          <img src="img/plant.png" alt="Planta">
+          <h4>Planta Nativa</h4>
+          <p class="points-cost">250 Puntos</p>
+          <button class="btn-action">Canjear</button>
+        </div>
+        <div class="reward-card">
+          <img src="img/bottle.png" alt="Botella">
+          <h4>Botella Reutilizable</h4>
+          <p class="points-cost">150 Puntos</p>
+          <button class="btn-action">Canjear</button>
+        </div>
+      </div>
+
+      <button class="btn-secondary" id="backFromRewards">Volver al Inicio</button>
+    </section>
+
+    <section class="screen fade-in" id="profileScreen">
+      <header>
+        <h2>Mi Perfil</h2>
+      </header>
+
+      <div class="profile-header">
+        <img src="img/avatar.png" alt="Usuario" class="avatar-large" />
+        <h3>Lucia</h3>
+        <p>Reciclador</p>
+      </div>
+
+      <div class="profile-stats">
+        <div class="card">
+          <h3>Puntos Totales</h3>
+          <p class="value">2150</p>
+        </div>
+        <div class="card">
+          <h3>Reciclado (Kg)</h3>
+          <p class="value">42.5</p>
+        </div>
+        <div class="card">
+          <h3>Racha</h3>
+          <p class="value">7 días</p>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <h4>Detalles de la cuenta</h4>
+        <div class="detail-item">
+          <span>Correo:</span>
+          <strong>lucia@recicla.app</strong>
+        </div>
+        <div class="detail-item">
+          <span>Miembro desde:</span>
+          <strong>Enero 2024</strong>
+        </div>
+      </div>
+
+      <div class="profile-links">
+        <a href="#" class="profile-link" id="editProfileLink">Editar Perfil</a>
+        <a href="#" class="profile-link" id="notificationsLink">Notificaciones</a>
+        <a href="#" class="profile-link" id="privacyLink">Privacidad</a>
+        <a href="#" class="profile-link logout">Cerrar Sesión</a>
+      </div>
+
+      <footer>
+        <nav class="bottom-nav">
+            <a href="#" id="navHomeProfile">Inicio</a>
+            <a href="#" id="navHistoryProfile">Historial</a>
+            <a href="#" id="navProfileProfile" class="active">Perfil</a>
+        </nav>
+      </footer>
+    </section>
+
+    <section class="screen fade-in" id="historyScreen">
+      <header>
+        <h2>Historial de Reciclaje</h2>
+      </header>
+
+      <div class="history-list">
+        <div class="history-item">
+          <div class="history-item-icon">♻️</div>
+          <div class="history-item-details">
+            <h4>3 Botellas plásticas (500ml)</h4>
+            <p>18 Oct 2025 - 15 Puntos</p>
+          </div>
+        </div>
+         <div class="history-item">
+          <div class="history-item-icon">📰</div>
+          <div class="history-item-details">
+            <h4>2kg Papel y Cartón</h4>
+            <p>17 Oct 2025 - 20 Puntos</p>
+          </div>
+        </div>
+         <div class="history-item">
+          <div class="history-item-icon">🥫</div>
+          <div class="history-item-details">
+            <h4>10 Latas de aluminio</h4>
+            <p>15 Oct 2025 - 25 Puntos</p>
+          </div>
+        </div>
+        <div class="history-item">
+          <div class="history-item-icon">🍾</div>
+          <div class="history-item-details">
+            <h4>5 Botellas de vidrio</h4>
+            <p>12 Oct 2025 - 10 Puntos</p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <nav class="bottom-nav">
+            <a href="#" id="navHomeHistory">Inicio</a>
+            <a href="#" id="navHistoryHistory" class="active">Historial</a>
+            <a href="#" id="navProfileHistory">Perfil</a>
+        </nav>
+      </footer>
+    </section>
+
+    <section class="screen fade-in" id="editProfileScreen">
+      <header>
+        <h2>Editar Perfil</h2>
+      </header>
+
+      <div class="settings-form">
+        <div class="form-group">
+          <label for="editName">Nombre</label>
+          <input type="text" id="editName" value="Lucia" />
+        </div>
+        <div class="form-group">
+          <label for="editEmail">Correo</label>
+          <input type="email" id="editEmail" value="lucia@recicla.app" />
+        </div>
+         <div class="form-group">
+          <label for="editPass">Nueva Contraseña</label>
+          <input type="password" id="editPass" placeholder="Dejar en blanco para no cambiar" />
+        </div>
+        <button class="btn">Guardar Cambios</button>
+      </div>
+      
+      <button class="btn-secondary" id="backFromEditProfile">Volver</button>
+    </section>
+
+    <section class="screen fade-in" id="notificationsScreen">
+      <header>
+        <h2>Notificaciones</h2>
+      </header>
+
+      <div class="settings-list">
+        <div class="settings-group">
+          <span>Nuevas recompensas</span>
+          <label class="settings-toggle">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <span>Recordatorios semanales</span>
+          <label class="settings-toggle">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <span>Noticias y consejos</span>
+          <label class="settings-toggle">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <button class="btn-secondary" id="backFromNotifications">Volver</button>
+    </section>
+
+    <section class="screen fade-in" id="privacyScreen">
+      <header>
+        <h2>Privacidad</h2>
+      </header>
+
+       <div class="settings-list">
+        <div class="settings-group">
+          <span>Perfil público</span>
+          <p>Permite que otros usuarios vean tu progreso.</p>
+          <label class="settings-toggle">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+         <div class="settings-group">
+          <span>Compartir datos</span>
+          <p>Compartir datos anónimos para investigación.</p>
+          <label class="settings-toggle">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+         <a href="#" class="profile-link">Ver Política de Privacidad</a>
+      </div>
+
+      <button class="btn-secondary" id="backFromPrivacy">Volver</button>
+    </section>
+
+    <section class="screen fade-in" id="truckScreen">
+      <header>
+        <h2>Horarios de Recolección</h2>
+      </header>
+      <div class="placeholder-content">
+        <img src="img/truck.png" alt="Camión" class="slide-img" />
+        <p>Próxima recolección en tu zona (La Cisterna):</p>
+        <h3>Martes, 21 de Octubre</h3>
+        <p>(Plásticos, Latas, Vidrios)</p>
+      </div>
+      <button class="btn-secondary" id="backFromTrucks">Volver</button>
+    </section>
+
+    <section class="screen fade-in" id="newsScreen">
+      <header>
+        <h2>Eventos y Noticias</h2>
+      </header>
+      <div class="placeholder-content">
+        <img src="img/news.png" alt="Noticias" class="slide-img" />
+        <h4>Feria de Reciclaje en Parque O'Higgins</h4>
+        <p>Este fin de semana, 25 y 26 de Octubre. ¡Trae tus reciclables y participa en talleres!</p>
+        <a href="#" class="link">Leer más...</a>
+      </div>
+      <button class="btn-secondary" id="backFromNews">Volver</button>
+    </section>
+
+
+  </div> <script src="script.js"></script>
+</body>
+</html>

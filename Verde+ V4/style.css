@@ -1,0 +1,1058 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: #1c703a;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app {
+  width: 390px;
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.screen {
+  display: none;
+  flex-direction: column;
+  padding: 28px 24px;
+  min-height: 100%;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* 🏞️ (MODIFICADO) Intro / Slideshow */
+.slideshow-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.slide.active {
+  display: flex;
+  animation: fadeIn 0.5s ease;
+}
+
+.slide-img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 24px;
+}
+
+.slide h2 {
+  font-weight: 700;
+  margin: 18px 0 10px;
+  color: #1b5e20;
+}
+
+.slide p {
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.slide-dots {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ddd;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dot.active {
+  background: #00c853;
+}
+
+.intro-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.intro-nav .btn, .intro-nav .btn-secondary {
+  margin: 0;
+  flex: 1;
+}
+
+.intro-nav .btn-secondary {
+  background: none;
+  box-shadow: none;
+  color: #777;
+  flex-grow: 0;
+  margin-right: 10px;
+}
+
+.intro-nav .btn-secondary:hover {
+  background: #f1f1f1;
+}
+
+/* Fin de Intro */
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  font-weight: 700;
+  margin: 18px 0 10px;
+  color: #1b5e20;
+}
+
+p {
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.btn {
+  background: #00c853;
+  color: white;
+  border: none;
+  padding: 14px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 18px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 200, 83, 0.3);
+}
+
+.btn:hover {
+  transform: scale(1.03);
+  background: #00b84a;
+}
+
+.btn-secondary {
+  background: #ebebeb;
+  color: #222;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: #dcdcdc;
+}
+
+/* 🔐 Login */
+.logo {
+  color: #00c853;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 28px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #00c853;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 200, 83, 0.15);
+}
+
+.link {
+  display: block;
+  margin-top: 10px;
+  color: #009688;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* 🏠 Dashboard */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.user-info h3 {
+  font-weight: 600;
+}
+
+.user-info p {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* 🌳 Stats */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 0;
+  gap: 10px;
+}
+
+.card {
+  flex: 1;
+  background: #f0f9f2;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 200, 83, 0.15);
+}
+
+.card h3 {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00c853;
+}
+
+/* ⚡ Acciones */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.action-card {
+  background: #f1f1f1;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 📱 Footer */
+footer {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+  margin-top: 18px;
+}
+
+.nav-btn {
+  border: none;
+  background: none;
+  font-size: 0.9rem;
+  padding: 10px;
+  color: #777;
+  transition: 0.2s;
+}
+
+.nav-btn.active, .nav-btn:hover {
+  color: #00c853;
+  font-weight: 600;
+}
+
+.logo-img {
+    /* Define el ancho que quieres para tu logo */
+    width: 250px; 
+    /* Mantiene la proporción de la imagen */
+    height: auto; 
+    /* Asegura que la imagen se comporte como un bloque para centrarla si es necesario */
+    display: block; 
+    /* Centra la imagen dentro del H1 */
+    margin: 0 auto 20px auto; 
+}
+
+/* ✨ Animaciones */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🗺️ Mapa */
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 16px;
+  margin: 16px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 📷 Escáner */
+#scanner {
+  width: 100%;
+  height: 300px;
+  background: #000;
+  border-radius: 10px;
+  margin: 16px 0;
+  overflow: hidden;
+  position: relative;
+}
+/* Estilo para el video de Quagga */
+#scanner video, #scanner canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#scanResult {
+  font-weight: 600;
+  color: #555;
+  margin-top: 8px;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #fff;
+  border-top: 1px solid #e0e0e0;
+  padding: 0.8rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.bottom-nav a {
+  color: #777;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.bottom-nav a.active {
+  color: #00b341;
+}
+
+.progress-section {
+    margin: 0 0 1.5rem 0;
+    background: #fff;
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.progress-section h3 {
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.progress-section p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.progress-section .positive {
+  color: #00b341;
+  font-weight: 600;
+  margin-left: 4px;
+}
+.quick-actions {
+  margin-top: 1.5rem;
+}
+
+.quick-actions h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.action-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+  transition: transform 0.2s;
+}
+
+.action-card:hover {
+  transform: translateY(-2px);
+}
+
+.action-card img {
+  width: 64px;
+  height: 64px;
+  margin-right: 1rem;
+}
+
+.action-card h4 {
+  margin: 0;
+  color: #111;
+}
+
+.action-card p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.3rem 0;
+}
+
+.btn-action {
+  background: #00b341;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.btn-action:hover {
+  background: #009c38;
+}
+
+/* ------------------------- */
+/* 🎁 Estilos de Recompensas */
+/* ------------------------- */
+
+.user-points-display {
+  font-size: 0.95rem;
+  color: #333;
+  background: #f0f9f2;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.user-points-display strong {
+  color: #00b341;
+  font-size: 1rem;
+}
+
+.section-intro {
+  margin: 12px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columnas */
+  gap: 16px;
+  margin: 16px 0;
+  text-align: left;
+  flex-grow: 1; /* Ocupa el espacio disponible */
+}
+
+.reward-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.reward-card:hover {
+  transform: translateY(-3px);
+}
+
+.reward-card img {
+  width: 100%;
+  max-width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+  padding: 5px;
+}
+
+.reward-card h4 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  color: #222;
+  /* Limita el texto a 2 líneas */
+  height: 2.4em; 
+  line-height: 1.2em;
+  overflow: hidden;
+}
+
+.reward-card .points-cost {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #00b341;
+  margin-bottom: 12px;
+}
+
+.reward-card .btn-action {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+}
+
+
+/* --------------------- */
+/* 👤 Estilos de Perfil */
+/* --------------------- */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px 0 24px 0;
+}
+
+.avatar-large {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+  border: 3px solid #fff;
+}
+
+.profile-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+}
+
+.profile-header p {
+  font-size: 1rem;
+  color: #777;
+  margin-top: 2px;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.profile-stats .card {
+  padding: 12px;
+}
+
+.profile-stats .card h3 {
+  font-size: 0.8rem;
+}
+
+.profile-stats .card .value {
+  font-size: 1.4rem;
+  margin-top: 4px;
+}
+
+.profile-details {
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 16px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.profile-details h4 {
+  margin-bottom: 12px;
+  color: #333;
+  text-align: left;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item span {
+  color: #666;
+}
+
+.profile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.profile-link {
+  background: #f1f1f1;
+  padding: 14px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: background 0.2s;
+  display: block;
+}
+
+.profile-link:hover {
+  background: #e7e7e7;
+}
+
+.profile-link.logout {
+  color: #c62828; /* Rojo para cerrar sesión */
+  background: #fbe9e7;
+}
+
+.profile-link.logout:hover {
+  background: #ffcdd2;
+}
+
+/* ----------------------------- */
+/* 📜 Estilos de Historial */
+/* ----------------------------- */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  flex-grow: 1; /* Ocupa espacio */
+  margin-bottom: 24px;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.history-item-icon {
+  font-size: 1.5rem;
+  margin-right: 16px;
+  background: #e0f2f1;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-item-details h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.history-item-details p {
+  font-size: 0.85rem;
+  color: #009688;
+  margin: 0;
+}
+
+/* ----------------------------- */
+/* ⚙️ Estilos de Ajustes */
+/* ----------------------------- */
+
+/* Formulario (Editar Perfil) */
+.settings-form {
+  width: 100%;
+  text-align: left;
+  flex-grow: 1;
+  margin: 16px 0;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.settings-form .btn {
+  width: 100%;
+}
+
+/* Lista (Notificaciones, Privacidad) */
+.settings-list {
+  width: 100%;
+  text-align: left;
+  flex-grow: 1;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-group {
+  background: #f9f9f9;
+  padding: 14px 16px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Para que 'p' quepa */
+}
+
+.settings-group span {
+  font-weight: 600;
+  color: #333;
+}
+
+.settings-group p {
+  flex-basis: 100%;
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 4px;
+}
+
+/* Toggle Switch */
+.settings-toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.settings-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 28px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #00c853;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* ------------------------------------ */
+/* Estilos de Pantallas Placeholder */
+/* ------------------------------------ */
+
+.placeholder-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: #f9f9f9;
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+}
+
+.placeholder-content .slide-img {
+  width: 150px;
+  height: 150px;
+}
+
+.placeholder-content h3 {
+  font-size: 1.3rem;
+  color: #00b341;
+}
+
+/* ---------------------------------- */
+/* (NUEVO) Estilos del Modal de Escáner */
+/* ---------------------------------- */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none; /* Oculto por defecto */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-overlay.active {
+  display: flex; /* Se muestra con JS */
+}
+
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 350px;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.modal-content h2 {
+  margin: 10px 0;
+  color: #222;
+}
+
+#modalPointsResult {
+  font-size: 1.1rem;
+  color: #00b341;
+  font-weight: 600;
+}
+
+#modalPointsResult strong {
+  font-size: 1.3rem;
+}
+
+.modal-info-section {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.modal-info-section h4 {
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.modal-info-section p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.modal-content .btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* ==== AJUSTES PARA LANDING PAGE (CON 4 IMÁGENES) ==== */
+body.landing {
+  display: block;
+  justify-content: unset;
+  align-items: unset;
+  min-height: auto;
+  background: #f9fff9;
+  color: #1a1a1a;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* 1. Estilos base para TODAS las secciones */
+body.landing section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  transition: all 0.4s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 2. Estilos para la PRIMERA sección (la del logo) */
+body.landing section:first-child {
+  background: #ffffff; /* Fondo blanco */
+  color: #1a1a1a;      /* Texto oscuro */
+}
+body.landing section:first-child h1 {
+  color: #156c3b;
+}
+
+/* 3. Estilos base para las OTRAS secciones (las que tendrán imagen) */
+body.landing section:not(:first-child) {
+  color: #fff; /* Texto blanco para todas */
+}
+body.landing section:not(:first-child) h2 {
+  color: #fff;
+}
+
+/* --- AQUÍ PONES TUS 4 IMÁGENES --- */
+
+/* Sección 2: "Reciclar nunca fue tan fácil" */
+body.landing section:nth-child(2) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                    url("img/StockCake-Recycling_in_Park_1762538912.jpg");
+}
+
+/* Sección 3: "Conéctate con el cambio" */
+body.landing section:nth-child(3) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                    url('img/StockCake-Recycling_in_Park_1762539347.jpg');
+}
+
+/* Sección 4: "Pequeñas acciones, gran impacto" */
+body.landing section:nth-child(4) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                    url('img/StockCake-Recycling_in_Park_1762537030.jpg');
+}
+
+/* Sección 5: "¿Listo para probar?" */
+body.landing section:nth-child(5) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                    url('img/Gemini_Generated_Image_lklr1wlklr1wlklr.png');
+}
+
+/* --- (Resto de tus estilos de landing page) --- */
+
+/* Titulares */
+body.landing h1, 
+body.landing h2 {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Texto */
+body.landing p {
+  max-width: 700px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* Botón principal */
+body.landing .demo-btn {
+  background: #34a36f;
+  color: #fff;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.3s ease;
+}
+body.landing .demo-btn:hover {
+  background: #2b865b;
+}
+
+/* Footer */
+body.landing footer {
+  padding: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Logo */
+.logo-img-2 {
+  width: 500px; 
+  height: auto; 
+  display: block; 
+  margin: 0 auto 20px auto; 
+  margin-top: -40px;
+}
