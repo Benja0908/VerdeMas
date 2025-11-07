@@ -12,16 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     // Código de una Coca-Cola 591ml
     '7501055311270': {
-      name: 'Botella de Bebida 591ml',
+      name: 'Coca-Cola 591ml',
       material: 'PET',
-      weight_g: 28,
-      img: 'img/bottle.png'
+      weight_g: 25,
+      img: 'img/Coca-Cola 591ml.png'
     },
     // Código de un Nectar Andina 1.5L
     '7802100001062': {
-      name: 'Envase TetraPak 1.5L',
+      name: 'Del Valle Piña 1L',
       material: 'TetraPak',
-      weight_g: 40,
+      weight_g: 26,
       img: 'img/plant.png' 
     }
   };
@@ -336,3 +336,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
