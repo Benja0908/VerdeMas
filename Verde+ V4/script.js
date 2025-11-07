@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       name: 'Pepsi botella PET 600ml',
       material: 'Plástico PET',
       weight_g: 27,
-      img: 'img/Pepsi botella PET 600ml.jpg'
+      img: 'img/Pepsi botella PET 600ml.webp'
     },
     '5449000131577': {
       name: 'Fanta lata 350ml',
@@ -408,6 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
 
 
 
