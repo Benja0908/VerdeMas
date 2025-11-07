@@ -1056,3 +1056,51 @@ body.landing footer {
   margin: 0 auto 20px auto; 
   margin-top: -40px;
 }
+
+/* ---------------------------------- */
+/* (NUEVO) Estilos de Lista Escaneable */
+/* ---------------------------------- */
+
+/* Ajusta la pantalla de escáner para que el contenido fluya 
+   desde arriba y permita scroll si es necesario */
+#scannerScreen {
+  justify-content: flex-start; /* Cambia de 'space-between' a 'flex-start' */
+  overflow-y: auto; /* Permite scroll si la lista es larga */
+}
+
+.scannable-list {
+  width: 100%;
+  margin-top: 24px; /* Espacio después del botón "Volver" */
+  text-align: left;
+}
+
+.scannable-list h3 {
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Reutilizamos .action-card pero con leves ajustes */
+.scannable-list .action-card {
+  background: #f9f9f9; /* Un fondo ligero */
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.scannable-list .action-card img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain; /* Para que la imagen no se deforme */
+  background: #ffffff; /* Fondo blanco para las imágenes */
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 4px;
+  margin-right: 12px;
+}
+
+.scannable-list .action-card h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #222;
+}
