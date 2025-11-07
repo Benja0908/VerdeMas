@@ -44,16 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
       material: 'Cartón + metal + plástico',
       weight_g: 40,
     },
-    '000080177173': {
-      name: 'Nutella frasco 350g',
-      material: 'Vidrio + tapa plástica',
-      weight_g: 220,
-    },
-    '3068320113210': {
-      name: 'Evian botella 500ml',
-      material: 'Plástico PET',
-      weight_g: 24,
-    },
     '5449000131805': {
       name: 'Sprite lata 330ml',
       material: 'Aluminio',
@@ -74,11 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
       material: 'Aluminio',
       weight_g: 15,
     },
-    '6281006487690': {
-      name: 'Nestlé Pure Life botella 1L',
-      material: 'Plástico PET',
-      weight_g: 32,
-    },
     '8712000051870': {
       name: 'Heineken botella vidrio 330ml',
       material: 'Vidrio verde',
@@ -94,22 +79,11 @@ document.addEventListener("DOMContentLoaded", () => {
       material: 'Plástico metalizado',
       weight_g: 7,
     },
-    '3033490002203': {
-      name: 'Danone Yogurt vaso 125g',
-      material: 'Plástico PP',
-      weight_g: 8,
-    },
     '7613035317046': {
       name: 'Nescafé frasco 200g',
       material: 'Vidrio + tapa metálica',
       weight_g: 190,
-    },
-    '7802100001062': {
-      name: 'Del Valle Piña 1L',
-      material: 'TetraPak',
-      weight_g: 26,
-    }
-    
+    },    
   };
 
   // --- Guías de reciclaje ---
@@ -422,6 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
 
 
 
