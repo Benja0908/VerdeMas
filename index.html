@@ -141,6 +141,157 @@
       <p id="newsletterMsg" style="margin-top: 12px;"></p>
     </form>
   </section>
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Descubre nuestra app Verde+</title>
+
+  <!-- Estilos del prototipo -->
+  <link rel="stylesheet" href="Verde+ V4/style.css" />
+
+  <!-- Librería de animaciones AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB5BE1XV1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RB5BE1XV1C');
+  </script>
+
+  <style>
+    body {
+      font-family: inherit;
+      background-color: var(--color-fondo, #f7f9f8);
+      color: var(--color-texto, #222);
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    h1, h2 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      opacity: 1;
+      line-height: 1.6;
+      color: white;
+    }
+
+    .btn-demo {
+      background-color: #3eb489;
+      color: #fff;
+      padding: 1.2rem 3rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .btn-demo:hover {
+      background-color: #36a07a;
+      transform: scale(1.05);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      background: #f0f0f0;
+    }
+
+    /* secciones con color de fondo alternado */
+    .alt {
+      background-color: #e9f7f1;
+    }
+  </style>
+</head>
+
+<body class="landing">
+  <section data-aos="fade-up">
+    <img src="Verde+ V4/img/logo sin bg.png" class="logo-img-2">
+    <h1>Descubre nuestra app</h1>
+    <h2>La forma más fácil y divertida de cuidar el planeta desde tu celular.</h2>
+  </section>
+
+  <section class="alt" data-aos="fade-up">
+    <h2>♻️ Reciclar nunca fue tan fácil</h2>
+    <p>¡Escanea, recicla y gana puntos que puedes canjear por recompensas reales!</p>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Una app creada para cuidar el medioambiente</h2>
+    <p>Nuestra app tiene el objetivo de ayudar a cuidar el planeta y a recompensarte por hacerlo.</p>
+  </section>
+
+  <section class="alt" data-aos="fade-up">
+    <h2>Pequeñas acciones, gran impacto</h2>
+    <p>Cada botella, lata o papel que reciclas suma para un futuro más verde.</p>
+  </section>
+
+  <section data-aos="zoom-in">
+    <h2>¿Listo para probar?</h2>
+    <a href="./Verde+ V4/index.html" class="btn-demo">Probar demo</a>
+  </section>
+  
+  <section class="alt" data-aos="fade-up">
+    <h2>💡 ¡Queremos conocer tu opinión!</h2>
+    <p>¿Tienes ideas, sugerencias o comentarios sobre la app? Cuéntanos lo que piensas y ayúdanos a mejorar.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWVpNrqy4yfHp1zL5K8AlgeP8TvFrxZ79-PAUgLk7hAq_OVw/viewform?usp=header" target="_blank" class="btn-demo">Déjanos tu comentario</a>
+  </section>
+    <section data-aos="fade-up">
+    <h2>📨 Recibe novedades sobre la app</h2>
+    <p>Déjanos tu correo y te avisaremos cuando lancemos nuevas funciones, actualizaciones y la versión oficial.</p>
+
+    <form id="newsletterForm" style="max-width: 400px; margin: auto;">
+      <input 
+        type="email" 
+        id="newsletterEmail" 
+        placeholder="tu_correo@ejemplo.com" 
+        required
+        style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ccc; margin-bottom: 10px;"
+      />
+
+      <button 
+        class="btn-demo" 
+        type="submit"
+        style="width: 100%; padding: 12px;"
+      >
+        Suscribirme
+      </button>
+
+      <p id="newsletterMsg" style="margin-top: 12px;"></p>
+    </form>
+  </section>
+  <script>
+document.getElementById("newsletterForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  
+  document.getElementById("newsletterMsg").textContent = "¡Gracias! Te enviaremos novedades pronto 😊";
+  this.reset();
+});
+</script>
 
 
   <footer>
@@ -157,6 +308,23 @@
   </script>
 </body>
 </html>
+
+
+  <footer>
+    © 2025 Verde+ | Todos los derechos reservados
+  </footer>
+
+  <!-- Script de animaciones -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>
+
 
 
 
