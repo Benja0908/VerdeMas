@@ -1008,11 +1008,6 @@ body.landing section:nth-child(5) {
                     url('img/Gemini_Generated_Image_lklr1wlklr1wlklr.png');
 }
 
-body.landing section:nth-child(7) {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-                    url('img/Gemini_Generated_Image_cuinemcuinemcuin.png');
-}
-
 /* --- (Resto de tus estilos de landing page) --- */
 
 /* Titulares */
@@ -1109,5 +1104,6 @@ body.landing footer {
   font-weight: 600;
   color: #222;
 }
+
 
 
