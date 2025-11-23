@@ -16,6 +16,7 @@ body {
   min-height: 100vh;
 }
 
+
 .app {
   width: 390px;
   background: #ffffff;
@@ -1111,13 +1112,8 @@ body.landing footer {
   color: #222;
 }
 
-.alt-dark {
-  background-color: #1c703a; /* verde oscuro */
-}
 
-.alt-dark h2 {
-  color: #ffffff; /* título en blanco para buen contraste */
-}
+
 
 
 
